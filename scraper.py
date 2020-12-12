@@ -36,7 +36,7 @@ def get_products(store_id, offset=0, headers=HEADERS, total=int(math.exp(99))):
 		}
 		r = requests.get(ROOT_URL+PRODUCTS, params=params, headers=headers)
 		j = r.json()
-		print('Got',min(offset+100,j['total']),'of',j['total'],'products in store',store_id)
+		print('Downloaded',min(offset+100,j['total']),'of',j['total'],'products in store',store_id)
 		products = j['productos'] + get_products(store_id, offset=offset+100, total=j['total'])
 	return products
 
@@ -45,7 +45,7 @@ def store_data(data, filename):
 	dir_path = os.path.join('data',date)
 	os.makedirs(dir_path, exist_ok=True)
 	file_path = os.path.join(dir_path,filename+'.pickle')
-	with open('filename.pickle', 'wb') as handle:
+	with open(file_path, 'wb') as handle:
 		pickle.dump(data, handle)
 
 
