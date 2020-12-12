@@ -65,7 +65,6 @@ def main():
 				except:
 					print('Request unsuccessful for store',stores[0]['id'],'Retrying another store in 1 minute.')
 					time.sleep(60)
-				break
 			success = True
 		except:
 			print('Request unsuccessful. Retrying in 1 minute.')
